@@ -13,6 +13,7 @@ export const transitionVariantsPage = {
   },
 };
 
+//esto es lo que hace que el comportaminto cambiue el cual se lo pasamso de tesnasitons
 export const fadeIn = (positions: string) => {
   return {
     visible: {

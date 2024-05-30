@@ -1,12 +1,15 @@
 "use client";
 import { transitionVariantsPage } from "@/utils/motion-transitions";
 
+
 import { AnimatePresence, motion } from "framer-motion";
 const TransitionsPage = () => {
   return (
+    //animatePresence viene d eframer motion
     <AnimatePresence>
       <div>
         <motion.div
+        //div para que cuando recargemos la pagina y el transition de page y todos los efectos
           className="fixed top-0 bottom-0 right-full w-screen z-30 bg-[#2e2257]"
           variants={transitionVariantsPage}
           initial="initial"
