@@ -3,6 +3,7 @@ import TransitionsPage from "@/components/transitions-page";
 import ContainerPage from "@/components/container";
 import Avatar from "@/components/avatar";
 import CounterServices from "@/components/counter-services";
+import TimeLine from "@/components/timeline";
 
 const PageAboutMe = () => {
   return (
@@ -18,9 +19,9 @@ const PageAboutMe = () => {
             Trayectoria Profesional
           </span>
         </h1>
-    <CounterServices/>
+        <CounterServices />
 
-
+        <TimeLine />
       </ContainerPage>
     </>
   );
