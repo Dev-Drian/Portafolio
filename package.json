@@ -18,7 +18,8 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18",
     "react-particles": "^2.12.2",
-    "react-type-animation": "^3.2.0"
+    "react-type-animation": "^3.2.0",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "@types/node": "^20",
