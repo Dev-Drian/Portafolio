@@ -10,7 +10,7 @@ const TransitionsPage = () => {
       <div>
         <motion.div
         //div para que cuando recargemos la pagina y el transition de page y todos los efectos
-          className="fixed top-0 bottom-0 right-full w-screen z-30 bg-[#2e2257]"
+          className="fixed top-0 bottom-0 right-full w-screen z-30 bg-[#e0e1dd]"
           variants={transitionVariantsPage}
           initial="initial"
           animate="animate"

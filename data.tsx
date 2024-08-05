@@ -1,11 +1,7 @@
-import { BookText, CodeSquare, HomeIcon, UserRound, Linkedin, Twitter, Rss, Twitch, Youtube, Crop, Pencil, Computer, Book, Rocket, Speech } from "lucide-react";
+import { BookText, CodeSquare, HomeIcon, UserRound, Linkedin, Twitter, Rss, Twitch, Youtube, Crop, Pencil, Computer, Book, Rocket, Speech, GitBranch, Gitlab, Github } from "lucide-react";
 
 export const socialNetworks = [
-    {
-        id: 1,
-        logo: <Youtube size={30} strokeWidth={1} />,
-        src: "#!",
-    },
+   
     {
         id: 2,
         logo: <Linkedin size={30} strokeWidth={1} />,
@@ -13,19 +9,10 @@ export const socialNetworks = [
     },
     {
         id: 3,
-        logo: <Twitter size={30} strokeWidth={1} />,
+        logo: <Github size={30} strokeWidth={1} />,
         src: "#!",
     },
-    {
-        id: 4,
-        logo: <Rss size={30} strokeWidth={1} />,
-        src: "#!",
-    },
-    {
-        id: 5,
-        logo: <Twitch size={30} strokeWidth={1} />,
-        src: "#!",
-    },
+   
 ];
 
 
@@ -52,14 +39,9 @@ export const itemsNavbar = [
         id: 4,
         title: "Target",
         icon: <CodeSquare size={25} color="#fff" strokeWidth={1} />,
-        link: "/portfolio",
+        link: "/portafolio",
     },
-    {
-        id: 5,
-        title: "Home",
-        icon: <Speech size={25} color="#fff" strokeWidth={1} />,
-        link: "/testimonials",
-    },
+  
 ];
 
 export const dataAboutPage = [
@@ -86,10 +68,10 @@ export const dataAboutPage = [
     },
     {
         id: 4,
-        title: "Prácticas Grado",
-        subtitle: "WebWizards Inc.",
+        title: "Nova Life",
+        subtitle: "Projecto escolar",
         description: "Únete a nosotros mientras creamos sitios web y aplicaciones interactivas que sorprenden y deleitan a nuestros clientes. Si tienes pasión por el diseño y la programación, y disfrutas colaborar en un entorno creativo, ¡queremos conocerte!        ",
-        date: "Mar 2018",
+        date: "Dec 2022",
     },
 ]
 

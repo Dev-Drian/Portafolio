@@ -5,17 +5,17 @@
 html,
 body {
   color: #fff;
-  background: #1f1934;
+  background: #232528;
 }
 
 main {
-  background: #1f1934;
+  background: #232528;
   height: 100vh;
   height: 100dvh;
 }
-
-.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
-.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
   background-color: #f5741c;
 }
 
