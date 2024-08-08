@@ -43,7 +43,7 @@ const Introduction = () => {
               Projects
             </Link>
             <Link
-              href="/PROJECTS"
+              href="/about-me"
               className="px-3 py-2 transition-all border-2 cursor-pointer text-secondary border-secondary text-md w-fit rounded-xl hover:shadow-xl hover:shadow-secondary"
             >
               Contacta conmigo
