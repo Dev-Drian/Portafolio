@@ -35,7 +35,7 @@ const PortafolioBox = (props: PortafolioBoxProps) => {
         <Link
           href={urlDemo}
           target="_blank"
-          className="p-2 transition rounded-lg duration-150 bg-secondary hover:bg-secondary/80"
+          className="p-2 transition rounded-lg duration-150 bg-[#f5741c] hover:bg-[#f5741c]/80"
         >
           {" "}
           Demo
