@@ -64,35 +64,19 @@ export const itemsNavbar = [
 export const dataAboutPage = [
   {
     id: 1,
-    title: "Frontend Developer",
-    subtitle: "TechSolutions",
+    title: "Analista de requerimientos",
+    subtitle: "Tecnologico Comfenalco",
     description:
-      "Colabora con un equipo dinámico para desarrollar interfaces de usuario atractivas y funcionales que impulsen el éxito de nuestros clientes en el mundo digital.",
-    date: "Nov 2023 ",
+      "Trabaje con un equipo dinámico para analizar y documentar requerimientos clave, asegurando que las soluciones desarrolladas satisfagan las necesidades de nuestros clientes y contribuyan al éxito en un entorno digital en constante evolución.",
+    date: "enero 2023",
   },
   {
     id: 2,
-    title: "Creador de Experiencias Digitales",
-    subtitle: "PixelCrafters",
+    title: "Desarrollador  fullstack ",
+    subtitle: "Tecnologico Comfenalco",
     description:
-      "Trabaja en proyectos emocionantes que desafían los límites de la creatividad y la tecnología. Únete a nosotros mientras creamos experiencias digitales cautivadoras que inspiran y cautivan a nuestros usuarios.",
-    date: "May 2021",
-  },
-  {
-    id: 3,
-    title: "Especialista en Desarrollo Frontend",
-    subtitle: "CodeForge Solutions",
-    description:
-      "Como desarrollador frontend, tendrás la oportunidad de colaborar en proyectos diversos y desafiantes que te permitirán expandir tus habilidades y dejar tu huella en el mundo digital.",
-    date: "Ago 2019",
-  },
-  {
-    id: 4,
-    title: "Nova Life",
-    subtitle: "Projecto escolar",
-    description:
-      "Únete a nosotros mientras creamos sitios web y aplicaciones interactivas que sorprenden y deleitan a nuestros clientes. Si tienes pasión por el diseño y la programación, y disfrutas colaborar en un entorno creativo, ¡queremos conocerte!        ",
-    date: "Dec 2022",
+      "Soy un desarrollador Full Stack con experiencia en Laravel y Livewire, especializado en la creación de soluciones web completas, desde el diseño de la arquitectura backend hasta la implementación de interfaces de usuario dinámicas y reactivas. Me enfoco en desarrollar aplicaciones robustas y escalables que ofrezcan una experiencia de usuario fluida y satisfactoria. Mi trabajo abarca todas las etapas del ciclo de vida del desarrollo, asegurando calidad, rendimiento y alineación con los objetivos del cliente.",
+    date: "enero 2024",
   },
 ];
 
@@ -106,14 +90,14 @@ export const dataCounter = [
   },
   {
     id: 1,
-    endCounter: 20,
+    endCounter: 10,
     text: "Clientes satisfechos",
     lineRight: true,
     lineRightMobile: false,
   },
   {
     id: 2,
-    endCounter: 220,
+    endCounter: 4,
     text: "Proyectos finalizados",
     lineRight: false,
     lineRightMobile: false,
@@ -158,59 +142,26 @@ export const serviceData = [
 export const dataPortfolio = [
   {
     id: 1,
-    title: "Web Pro",
+    title: "Nova",
     image: "/image-1.jpg",
     urlGithub: "#!",
     urlDemo: "#!",
   },
   {
     id: 2,
-    title: "Desarrollo Web Ágil",
+    title: "Nova Life",
     image: "/image-2.jpg",
-    urlGithub: "#!",
+    urlGithub: "https://github.com/Adecas-Eg/Nova_life",
     urlDemo: "#!",
+    
   },
   {
     id: 3,
-    title: "Estrategias Web",
+    title: "Ikarus",
     image: "/image-3.jpg",
     urlGithub: "#!",
     urlDemo: "#!",
   },
-  {
-    id: 4,
-    title: "Ideas Creativas",
-    image: "/image-4.jpg",
-    urlGithub: "#!",
-    urlDemo: "#!",
-  },
-  {
-    id: 5,
-    title: "Webs Impactantes",
-    image: "/image-5.jpg",
-    urlGithub: "#!",
-    urlDemo: "#!",
-  },
-  {
-    id: 6,
-    title: "Web Dinámica",
-    image: "/image-6.jpg",
-    urlGithub: "#!",
-    urlDemo: "#!",
-  },
-  {
-    id: 7,
-    title: "Dark Web ",
-    image: "/image-7.jpg",
-    urlGithub: "#!",
-    urlDemo: "#!",
-  },
-  {
-    id: 8,
-    title: "E-commerce web",
-    image: "/image-8.jpg",
-    urlGithub: "#!",
-    urlDemo: "#!",
-  },
+  
 ];
 

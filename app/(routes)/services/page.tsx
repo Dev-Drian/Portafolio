@@ -22,7 +22,7 @@ const ServicesPage = () => {
             la identidad de marca de mis clientes y mejoran su presencia en
             línea.
           </p>
-          <button className="px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/65">
+          <button className="px-3 py-2 transition-all border-2 cursor-pointer text-secondary border-secondary text-md w-fit rounded-xl hover:shadow-xl hover:shadow-secondary">
             Contacta conmigo
           </button>
         </div>
