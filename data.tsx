@@ -30,7 +30,7 @@ export const socialNetworks = [
   {
     id: 3,
     logo: <Github size={30} strokeWidth={1} />,
-    src: "https://github.com/Adecas-Eg",
+    src: "https://github.com/Dev-Drian",
   },
 ];
 
