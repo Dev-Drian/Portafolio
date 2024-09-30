@@ -143,14 +143,14 @@ export const dataPortfolio = [
   {
     id: 1,
     title: "Nova",
-    image: "/image-1.jpg",
+    image: "/nova.jpeg",
     urlGithub: "#!",
     urlDemo: "#!",
   },
   {
     id: 2,
     title: "Nova Life",
-    image: "/image-2.jpg",
+    image: "/noba.jpeg.jpg",
     urlGithub: "https://github.com/Adecas-Eg/Nova_life",
     urlDemo: "#!",
     
@@ -158,7 +158,7 @@ export const dataPortfolio = [
   {
     id: 3,
     title: "Ikarus",
-    image: "/image-3.jpg",
+    image: "/ikarus.jpeg",
     urlGithub: "#!",
     urlDemo: "#!",
   },
