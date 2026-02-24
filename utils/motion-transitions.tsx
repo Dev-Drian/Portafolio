@@ -13,7 +13,6 @@ export const transitionVariantsPage = {
   },
 };
 
-//esto es lo que hace que el comportaminto cambiue el cual se lo pasamso de tesnasitons
 export const fadeIn = (positions: string) => {
   return {
     visible: {
@@ -22,20 +21,20 @@ export const fadeIn = (positions: string) => {
       opacity: 1,
       transition: {
         type: "tween",
-        duration: 1.4,
-        delay: 0.5,
-        ease: [0.25, 0.25, 0.25, 0.75],
+        duration: 0.8,
+        delay: 0.2,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
     hidden: {
-      y: positions === "botton" ? -80 : 0,
-      x: positions === "righ" ? -80 : 0,
+      y: positions === "botton" ? -60 : 0,
+      x: positions === "righ" ? -60 : 0,
       opacity: 0,
       transition: {
         type: "tween",
-        duration: 1.4,
-        delay: 0.5,
-        ease: [0.25, 0.25, 0.25, 0.75],
+        duration: 0.6,
+        delay: 0.1,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };

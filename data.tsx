@@ -19,6 +19,12 @@ import {
   Github,
   DatabaseIcon,
   DockIcon,
+  Server,
+  Layout,
+  Layers,
+  Cloud,
+  Workflow,
+  Users,
 } from "lucide-react";
 
 export const socialNetworks = [
@@ -64,104 +70,222 @@ export const itemsNavbar = [
 export const dataAboutPage = [
   {
     id: 1,
-    title: "Analista de requerimientos",
-    subtitle: "Tecnologico Comfenalco",
+    title: "Ingeniería de Sistemas",
+    subtitle: "Tecnológico Comfenalco · Cartagena, Colombia",
     description:
-      "Trabaje con un equipo dinámico para analizar y documentar requerimientos clave, asegurando que las soluciones desarrolladas satisfagan las necesidades de nuestros clientes y contribuyan al éxito en un entorno digital en constante evolución.",
-    date: "enero 2023",
+      "Formación profesional en desarrollo de software, bases de datos, arquitectura de sistemas y metodologías ágiles. Skills: Java, Spring Boot, Python, .NET, Vue, React, React Native, Next.js, TypeScript, Node.js, NestJS, Laravel, MySQL, SQL Server, GraphQL, Docker, CI/CD, Git.",
+    date: "Ene 2021",
+    endDate: "Dic 2025",
+    color: "cyan",
+    icon: "education",
+    isEducation: true,
   },
   {
     id: 2,
-    title: "Desarrollador  fullstack ",
-    subtitle: "Tecnologico Comfenalco",
+    title: "Analista Desarrollador",
+    subtitle: "Comfenalco · Cartagena, Colombia",
     description:
-      "Soy un desarrollador Full Stack con experiencia en Laravel y Livewire, especializado en la creación de soluciones web completas, desde el diseño de la arquitectura backend hasta la implementación de interfaces de usuario dinámicas y reactivas. Me enfoco en desarrollar aplicaciones robustas y escalables que ofrezcan una experiencia de usuario fluida y satisfactoria. Mi trabajo abarca todas las etapas del ciclo de vida del desarrollo, asegurando calidad, rendimiento y alineación con los objetivos del cliente.",
-    date: "enero 2024",
+      "Participé en el desarrollo de aplicaciones académicas, priorizando rendimiento, escalabilidad y buenas prácticas de código. Implementé dashboards y optimicé consultas en base de datos para mejorar el control y la toma de decisiones institucionales.",
+    date: "Ene 2022",
+    endDate: "Mar 2025",
+    color: "emerald",
+    icon: "code",
+  },
+  {
+    id: 3,
+    title: "Líder de Desarrollo Full Stack",
+    subtitle: "Limo Partner · Estados Unidos",
+    description:
+      "Lideré el diseño, desarrollo y evolución de un CRM a medida que centraliza la operación de la compañía, integrando APIs externas (mensajería y notificaciones en tiempo real) y automatizando procesos administrativos clave. Logré un 40% de mejora en el proceso productivo y un 30% en rendimiento de los servicios.",
+    date: "Oct 2022",
+    endDate: "Dic 2025",
+    color: "purple",
+    icon: "rocket",
+  },
+  {
+    id: 4,
+    title: "Desarrollador Full Stack",
+    subtitle: "Cotecmar · Cartagena, Colombia",
+    description:
+      "Participé en el desarrollo de soluciones institucionales utilizando tecnologías modernas, asegurando rendimiento, escalabilidad y mantenimiento sostenible del código. Implementé dashboards de seguimiento y optimicé consultas complejas en base de datos para procesos administrativos.",
+    date: "Jul 2025",
+    endDate: "Actualidad",
+    color: "blue",
+    icon: "ship",
+  },
+  {
+    id: 5,
+    title: "Desarrollador Full Stack",
+    subtitle: "Saroa SAS · Cartagena, Colombia",
+    description:
+      "Desarrollo soluciones enfocadas en la gestión de planes y control de alimentación para entidades públicas (Ministerio de Educación), asegurando organización, trazabilidad y correcta administración de la información. Contribuyo a la mejora continua del sistema mediante ajustes en arquitectura.",
+    date: "Nov 2025",
+    endDate: "Actualidad",
+    color: "orange",
+    icon: "food",
   },
 ];
 
 export const dataCounter = [
   {
     id: 0,
-    endCounter: 2,
+    endCounter: 4,
     text: "Años de experiencia",
     lineRight: true,
     lineRightMobile: true,
+    icon: "rocket",
   },
   {
     id: 1,
-    endCounter: 10,
+    endCounter: 25,
     text: "Clientes satisfechos",
     lineRight: true,
     lineRightMobile: false,
+    icon: "star",
   },
   {
     id: 2,
-    endCounter: 4,
+    endCounter: 18,
     text: "Proyectos finalizados",
+    lineRight: true,
+    lineRightMobile: false,
+    icon: "code",
+  },
+  {
+    id: 3,
+    endCounter: 500,
+    text: "Commits realizados",
     lineRight: false,
     lineRightMobile: false,
+    icon: "coin",
   },
 ];
 
 export const serviceData = [
   {
-    icon: <Crop />,
-    title: "Desarrollo de Backend",
-    description:
-      "Desarrollo de backend en lenguajes como PHP, Java, Spring Boot y Laravel.",
+    icon: <Server />,
+    title: "Desarrollo Backend",
+    description: "Diseño e implementación de APIs RESTful, microservicios y arquitecturas escalables con enfoque en seguridad y rendimiento.",
+    tags: ["Laravel", "NestJS", ".NET", "Node.js", "Spring Boot"],
+    color: "purple",
   },
   {
-    icon: <Pencil />,
+    icon: <Layout />,
     title: "Desarrollo Frontend",
-    description:
-      "Implementación de interfaces frontend utilizando HTML, CSS y JavaScript, con el uso de frameworks como React y Next.js.",
+    description: "Creación de interfaces modernas, responsivas y accesibles. Single Page Applications con frameworks de última generación.",
+    tags: ["React", "Next.js", "Vue.js", "Angular"],
+    color: "cyan",
   },
   {
-    icon: <Computer />,
-    title: "Desarrollo Fullstack",
-    description:
-      "Desarrollo fullstack utilizando PHP, Laravel y Livewire para crear aplicaciones web completas y dinámicas.",
+    icon: <Layers />,
+    title: "Soluciones Fullstack",
+    description: "Desarrollo integral de aplicaciones web completas, desde la base de datos hasta la interfaz de usuario.",
+    tags: ["Laravel + Vue", "React + Node", "Next.js + NestJS"],
+    color: "emerald",
   },
-
   {
-    icon: <DatabaseIcon />,
-    title: "Gestión de Bases de Datos",
-    description:
-      "Gestion de bases de datos relacionales utilizando SQL, PostgreSQL y MySQL.",
+    icon: <Cloud />,
+    title: "DevOps & Cloud",
+    description: "Configuración de entornos en la nube, contenedores y pipelines de CI/CD para despliegues automatizados.",
+    tags: ["Docker", "Azure", "GitHub Actions", "Linux"],
+    color: "blue",
   },
-
   {
-    icon: <DockIcon />,
-    title: "Análisis de Requerimientos",
-    description:
-      "Especializado en el análisis de requerimientos para entender y documentar las necesidades del cliente.",
+    icon: <Workflow />,
+    title: "Automatización de Procesos",
+    description: "Diseño de workflows con n8n para integrar sistemas, automatizar tareas repetitivas y optimizar operaciones.",
+    tags: ["n8n", "Make", "Zapier", "APIs", "Webhooks"],
+    color: "orange",
+  },
+  {
+    icon: <Users />,
+    title: "Gestión Ágil de Proyectos",
+    description: "Experiencia en equipos Scrum, planificación de sprints, estimación y entrega continua de valor.",
+    tags: ["Scrum", "Kanban", "Jira", "Git Flow"],
+    color: "pink",
   },
 ];
 
 export const dataPortfolio = [
   {
     id: 1,
+    title: "CRM Limo Partner",
+    image: "/quoterides.png",
+    urlGithub: "#!",
+    urlDemo: "#!",
+    description: "CRM completo para transporte ejecutivo con integración de APIs externas, sistema de reservas, cotizaciones automatizadas, notificaciones en tiempo real y optimización SEO.",
+    tags: ["Laravel", "Vue.js", "APIs", "SEO"],
+    color: "purple",
+  },
+  {
+    id: 2,
+    title: "SIGE - ESAP",
+    image: "/esap.png",
+    urlGithub: "#!",
+    urlDemo: "#!",
+    description: "Sistema de Información y Gestión para la Escuela Superior de Administración Pública. Gestión integral de personas, roles y procesos académicos.",
+    tags: ["React", "Next.js", "SQL Server"],
+    color: "blue",
+  },
+  {
+    id: 3,
+    title: "Quote Rides",
+    image: "/quoterides.png",
+    urlGithub: "#!",
+    urlDemo: "#!",
+    description: "Landing page y sistema de cotizaciones para servicio de transporte premium con integración WordPress y optimización de conversión.",
+    tags: ["JavaScript", "WordPress", "PHP"],
+    color: "cyan",
+  },
+  {
+    id: 4,
+    title: "SIGEPAE - MinEducación",
+    image: "/sigepae.png",
+    urlGithub: "#!",
+    urlDemo: "#!",
+    description: "Ecosistema de información para el programa 'Alimentos para Aprender' del Ministerio de Educación Nacional. Control y trazabilidad alimentaria.",
+    tags: ["Angular", ".NET", "SQL Server"],
+    color: "emerald",
+  },
+  {
+    id: 5,
+    title: "TOP - Cotecmar",
+    image: "/top.png",
+    urlGithub: "#!",
+    urlDemo: "#!",
+    description: "Portal de empleados y Dashboard de ofertas para Cotecmar. Gestión de actividades, balance general y seguimiento de proyectos navales.",
+    tags: ["Vue.js", "Laravel", "SQL Server"],
+    color: "indigo",
+  },
+  {
+    id: 6,
     title: "Nova",
     image: "/nova.jpeg",
     urlGithub: "#!",
     urlDemo: "#!",
+    description: "Aplicación de gestión empresarial con módulos de inventario, facturación y reportes dinámicos para PYMES.",
+    tags: ["Laravel", "Livewire", "MySQL"],
+    color: "pink",
   },
   {
-    id: 2,
-    title: "Nova Life",
-    image: "/noba.jpeg.jpg",
-    urlGithub: "https://github.com/Adecas-Eg/Nova_life",
-    urlDemo: "#!",
-    
-  },
-  {
-    id: 3,
+    id: 7,
     title: "Ikarus",
     image: "/ikarus.jpeg",
     urlGithub: "#!",
     urlDemo: "#!",
+    description: "Sistema de monitoreo y análisis de datos en tiempo real para optimización de procesos empresariales.",
+    tags: ["React", "Laravel", "PostgreSQL"],
+    color: "orange",
   },
-  
+  {
+    id: 8,
+    title: "Elguedo & Asociados",
+    image: "/abogados elguedo y aosicados .png",
+    urlGithub: "#!",
+    urlDemo: "https://elguedoyasociados.com",
+    description: "Landing page profesional para bufete de Abogados Laboralistas en Cartagena. Diseño elegante con integración de WhatsApp y formulario de contacto.",
+    tags: ["Next.js", "Tailwind CSS", "SEO"],
+    color: "amber",
+  },
 ];
 

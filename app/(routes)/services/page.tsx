@@ -1,34 +1,43 @@
-import AvatarServices from "@/components/avatar-services";
+"use client";
+
 import CircleImage from "@/components/circle-image";
 import SliderServices from "@/components/slider-services";
 import TransitionsPage from "@/components/transitions-page";
+import { motion } from "framer-motion";
 
 const ServicesPage = () => {
   return (
     <>
       <TransitionsPage />
       <CircleImage />
-      <AvatarServices />
-      <div className="grid items-center justify-center h-screen max-w-5xl gap-6 mx-auto md:grid-cols-2">
-        <div className="max-w-[450px]">
-          <h1 className="text-2xl leading-tight text-center md:text-left md:text-4xl md:mb-5">
-            Mis <span className="font-bold text-secondary"> servicios.</span>
-          </h1>
-          <p className="mb-3 text-xl text-gray-300">
-            Ofrezco servicios de desarrollo web frontend especializados en la
-            creación de sitios web y aplicaciones atractivas y funcionales.
-            Utilizando las últimas tecnologías, como HTML, CSS y JavaScript,
-            diseño interfaces de usuario intuitivas y responsivas que reflejan
-            la identidad de marca de mis clientes y mejoran su presencia en
-            línea.
-          </p>
-          <button className="px-3 py-2 transition-all border-2 cursor-pointer text-secondary border-secondary text-md w-fit rounded-xl hover:shadow-xl hover:shadow-secondary">
-            Contacta conmigo
-          </button>
-        </div>
 
-        {/* SLIDER */}
-        <div>
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-28 md:py-32">
+        <div className="w-full max-w-5xl">
+          {/* ── Header ─────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="mb-14 md:mb-20"
+          >
+            {/* Eyebrow */}
+            <span className="inline-block text-[11px] font-mono tracking-[0.25em] uppercase text-blue-300/40 mb-4">
+              — Lo que hago
+            </span>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white/90 leading-[1.1]">
+              Construyo software
+              <br />
+              <span className="gradient-text">que importa.</span>
+            </h1>
+
+            <p className="mt-5 text-[15px] text-white/35 max-w-md leading-relaxed">
+              Desarrollo soluciones end-to-end con arquitecturas modernas,
+              DevOps y automatización inteligente.
+            </p>
+          </motion.div>
+
+          {/* ── Bento Grid ─────────────────────────── */}
           <SliderServices />
         </div>
       </div>
