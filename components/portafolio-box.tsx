@@ -117,24 +117,28 @@ const PortafolioBox = ({ data, index }: PortafolioBoxProps) => {
 
         {/* Action links */}
         <div className="flex items-center gap-4 pt-3 border-t border-white/[0.05]">
-          <Link
-            href={urlGithub}
-            target="_blank"
-            className={`inline-flex items-center gap-1.5 text-[11.5px] font-medium text-white/30
-              ${accent.hover} transition-all duration-300 hover:gap-2`}
-          >
-            <Github size={13} strokeWidth={1.5} />
-            Código
-          </Link>
-          <Link
-            href={urlDemo}
-            target="_blank"
-            className={`inline-flex items-center gap-1.5 text-[11.5px] font-medium text-white/30
-              ${accent.hover} transition-all duration-300 hover:gap-2`}
-          >
-            <ExternalLink size={13} strokeWidth={1.5} />
-            Demo
-          </Link>
+          {urlGithub && urlGithub !== "#!" && (
+            <Link
+              href={urlGithub}
+              target="_blank"
+              className={`inline-flex items-center gap-1.5 text-[11.5px] font-medium text-white/30
+                ${accent.hover} transition-all duration-300 hover:gap-2`}
+            >
+              <Github size={13} strokeWidth={1.5} />
+              Código
+            </Link>
+          )}
+          {urlDemo && urlDemo !== "#!" && (
+            <Link
+              href={urlDemo}
+              target="_blank"
+              className={`inline-flex items-center gap-1.5 text-[11.5px] font-medium text-white/30
+                ${accent.hover} transition-all duration-300 hover:gap-2`}
+            >
+              <ExternalLink size={13} strokeWidth={1.5} />
+              Demo
+            </Link>
+          )}
         </div>
       </div>
     </motion.div>

@@ -258,16 +258,6 @@ export const dataPortfolio = [
     color: "indigo",
   },
   {
-    id: 9,
-    title: "Dashboard Cotecmar",
-    image: "/top.png",
-    urlGithub: "#!",
-    urlDemo: "https://cotecmar.com/dashboard",
-    description: "Dashboard corporativo para COTECMAR con métricas de gestión, indicadores clave y visualización de datos en tiempo real.",
-    tags: ["Vue.js", "Laravel", "SQL Server"],
-    color: "blue",
-  },
-  {
     id: 6,
     title: "Nova",
     image: "/nova.jpeg",
@@ -310,9 +300,9 @@ export const dataPortfolio = [
   {
     id: 11,
     title: "Livewire CountUp",
-    image: "/nova.jpeg",
+    image: "/quoterides.png",
     urlGithub: "https://github.com/Dev-Drian/livewire-countUp",
-    urlDemo: "https://github.com/Dev-Drian/livewire-countUp",
+    urlDemo: "#!",
     description: "Paquete open source para Laravel que integra contadores animados usando Livewire y Alpine.js. Incremento animado, personalización extensa y compatible con Tailwind CSS.",
     tags: ["Laravel", "Livewire", "Alpine.js", "Open Source"],
     color: "emerald",
