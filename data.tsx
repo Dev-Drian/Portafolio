@@ -284,7 +284,7 @@ export const dataPortfolio = [
     urlGithub: "#!",
     urlDemo: "https://tecnopro.tecnologicocomfenalco.edu.co/login",
     description: "Sistema de monitoreo y análisis de datos en tiempo real para optimización de procesos empresariales.",
-    tags: ["React", "Laravel", "PostgreSQL"],
+    tags: ["Laravel", "Vue.js", "PostgreSQL"],
     color: "orange",
   },
   {
@@ -306,6 +306,16 @@ export const dataPortfolio = [
     description: "Landing page profesional para bufete de Abogados Laboralistas en Cartagena. Diseño elegante con integración de WhatsApp y formulario de contacto.",
     tags: ["Next.js", "Tailwind CSS", "SEO"],
     color: "amber",
+  },
+  {
+    id: 11,
+    title: "Livewire CountUp",
+    image: "/nova.jpeg",
+    urlGithub: "https://github.com/Dev-Drian/livewire-countUp",
+    urlDemo: "https://github.com/Dev-Drian/livewire-countUp",
+    description: "Paquete open source para Laravel que integra contadores animados usando Livewire y Alpine.js. Incremento animado, personalización extensa y compatible con Tailwind CSS.",
+    tags: ["Laravel", "Livewire", "Alpine.js", "Open Source"],
+    color: "emerald",
   },
 ];
 
