@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // React Icons imports
 import { 
-  SiLaravel, SiNestjs, SiDotnet, SiNodedotjs, SiSpringboot,
-  SiReact, SiNextdotjs, SiVuedotjs, SiAngular, SiTypescript,
-  SiPostgresql, SiMongodb, SiRedis, SiMysql,
+  SiLaravel, SiNestjs, SiDotnet, SiNodedotjs,
+  SiReact, SiNextdotjs, SiVuedotjs, SiTypescript,
+  SiPostgresql, SiMongodb, SiRedis,
   SiDocker, SiKubernetes, SiGithubactions,
-  SiGit, SiJira, SiFigma, SiPostman, SiGraphql
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
@@ -18,50 +17,47 @@ import { VscAzure } from "react-icons/vsc";
 // TECH DATA
 // ═══════════════════════════════════════════════════════════
 
-const techOrbits = [
+const baseTechOrbits = [
   {
     name: "Backend",
     color: "#8b5cf6",
-    duration: 30,
-    radius: 120,
+    duration: 35,
+    baseRadius: 70,
     techs: [
       { name: "Laravel", Icon: SiLaravel, color: "#FF2D20" },
       { name: "NestJS", Icon: SiNestjs, color: "#E0234E" },
       { name: ".NET", Icon: SiDotnet, color: "#512BD4" },
       { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
-      { name: "Spring", Icon: SiSpringboot, color: "#6DB33F" },
     ]
   },
   {
     name: "Frontend",
     color: "#06b6d4",
-    duration: 35,
-    radius: 180,
+    duration: 42,
+    baseRadius: 120,
     techs: [
       { name: "React", Icon: SiReact, color: "#61DAFB" },
       { name: "Next.js", Icon: SiNextdotjs, color: "#ffffff" },
       { name: "Vue.js", Icon: SiVuedotjs, color: "#4FC08D" },
-      { name: "Angular", Icon: SiAngular, color: "#DD0031" },
-      { name: "TS", Icon: SiTypescript, color: "#3178C6" },
+      { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
     ]
   },
   {
     name: "Database",
     color: "#10b981",
-    duration: 40,
-    radius: 240,
+    duration: 50,
+    baseRadius: 170,
     techs: [
       { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
       { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
       { name: "Redis", Icon: SiRedis, color: "#DC382D" },
-      { name: "MySQL", Icon: SiMysql, color: "#4479A1" },
     ]
   },
   {
     name: "DevOps",
     color: "#f97316",
-    duration: 45,
-    radius: 300,
+    duration: 58,
+    baseRadius: 220,
     techs: [
       { name: "Docker", Icon: SiDocker, color: "#2496ED" },
       { name: "K8s", Icon: SiKubernetes, color: "#326CE5" },
@@ -73,118 +69,166 @@ const techOrbits = [
 ];
 
 // ═══════════════════════════════════════════════════════════
-// ORBIT COMPONENT
+// HOOK PARA DETECTAR TAMAÑO
 // ═══════════════════════════════════════════════════════════
 
-interface OrbitProps {
-  orbit: typeof techOrbits[0];
-  index: number;
-  isHighlighted: boolean;
-  isDimmed: boolean;
+const useScreenSize = () => {
+  const [multiplier, setMultiplier] = useState(1);
+  
+  useEffect(() => {
+    const updateSize = () => {
+      const width = window.innerWidth;
+      if (width < 400) {
+        setMultiplier(0.5);
+      } else if (width < 500) {
+        setMultiplier(0.6);
+      } else if (width < 640) {
+        setMultiplier(0.7);
+      } else if (width < 768) {
+        setMultiplier(0.85);
+      } else {
+        setMultiplier(1);
+      }
+    };
+    
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  
+  return multiplier;
+};
+
+// ═══════════════════════════════════════════════════════════
+// SINGLE TECH ICON COMPONENT
+// ═══════════════════════════════════════════════════════════
+
+interface TechIconProps {
+  tech: { name: string; Icon: React.ComponentType<{ size: number; color: string }>; color: string };
+  angle: number;
+  radius: number;
+  orbitDuration: number;
+  iconSize: number;
   onHover: (name: string | null) => void;
-  hoveredTech: string | null;
+  isHovered: boolean;
 }
 
-const Orbit = ({ orbit, index, isHighlighted, isDimmed, onHover, hoveredTech }: OrbitProps) => {
+const TechIcon = ({ tech, angle, radius, orbitDuration, iconSize, onHover, isHovered }: TechIconProps) => {
+  const Icon = tech.Icon;
+  
+  return (
+    <div
+      className="absolute pointer-events-none"
+      style={{
+        left: '50%',
+        top: '50%',
+        transform: `rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+      }}
+    >
+      {/* Counter-rotate wrapper */}
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{
+          duration: orbitDuration,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        className="relative -translate-x-1/2 -translate-y-1/2"
+      >
+        <motion.div 
+          className="flex items-center justify-center rounded-lg pointer-events-auto cursor-pointer"
+          style={{
+            width: iconSize,
+            height: iconSize,
+            background: `linear-gradient(135deg, ${tech.color}15, ${tech.color}35)`,
+            border: `1.5px solid ${tech.color}${isHovered ? 'cc' : '60'}`,
+            boxShadow: isHovered ? `0 0 20px ${tech.color}50` : `0 2px 8px rgba(0,0,0,0.3)`,
+          }}
+          onMouseEnter={() => onHover(tech.name)}
+          onMouseLeave={() => onHover(null)}
+          whileHover={{ scale: 1.25 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Icon 
+            size={iconSize * 0.55} 
+            color={tech.color}
+          />
+        </motion.div>
+        
+        {/* Tooltip */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ opacity: 0, y: 4, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 4, scale: 0.9 }}
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-semibold whitespace-nowrap z-50 pointer-events-none"
+              style={{ 
+                background: tech.color,
+                color: '#fff'
+              }}
+            >
+              {tech.name}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════
+// ORBIT RING COMPONENT
+// ═══════════════════════════════════════════════════════════
+
+interface OrbitRingProps {
+  orbit: typeof baseTechOrbits[0];
+  radius: number;
+  isHighlighted: boolean;
+  isDimmed: boolean;
+  onTechHover: (name: string | null) => void;
+  hoveredTech: string | null;
+  iconSize: number;
+}
+
+const OrbitRing = ({ orbit, radius, isHighlighted, isDimmed, onTechHover, hoveredTech, iconSize }: OrbitRingProps) => {
   const techCount = orbit.techs.length;
   
   return (
     <div 
       className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-500"
       style={{
-        width: orbit.radius * 2,
-        height: orbit.radius * 2,
-        border: `1px solid ${orbit.color}${isHighlighted ? '60' : isDimmed ? '10' : '25'}`,
-        boxShadow: isHighlighted ? `0 0 30px ${orbit.color}30, inset 0 0 30px ${orbit.color}10` : 'none',
-        opacity: isDimmed ? 0.3 : 1,
+        width: radius * 2,
+        height: radius * 2,
+        border: `1px solid ${orbit.color}${isHighlighted ? '70' : isDimmed ? '15' : '35'}`,
+        boxShadow: isHighlighted ? `0 0 30px ${orbit.color}30, inset 0 0 20px ${orbit.color}10` : 'none',
+        opacity: isDimmed ? 0.35 : 1,
       }}
     >
-      {/* Orbit ring glow */}
-      {isHighlighted && (
-        <div 
-          className="absolute inset-0 rounded-full animate-pulse"
-          style={{ 
-            background: `radial-gradient(circle, transparent 60%, ${orbit.color}20 100%)` 
-          }}
-        />
-      )}
-      
-      {/* Rotating container */}
+      {/* Rotating container for techs */}
       <motion.div
         className="absolute inset-0"
         animate={{ rotate: 360 }}
         transition={{
-          duration: isHighlighted ? orbit.duration * 0.6 : orbit.duration,
+          duration: orbit.duration,
           repeat: Infinity,
           ease: "linear"
         }}
       >
         {orbit.techs.map((tech, techIndex) => {
           const angle = (techIndex / techCount) * 360;
-          const Icon = tech.Icon;
-          const isHovered = hoveredTech === tech.name;
           
           return (
-            <motion.div
+            <TechIcon
               key={tech.name}
-              className="absolute cursor-pointer"
-              style={{
-                left: '50%',
-                top: '50%',
-                transform: `rotate(${angle}deg) translateX(${orbit.radius}px) rotate(-${angle}deg)`,
-              }}
-              onHoverStart={() => onHover(tech.name)}
-              onHoverEnd={() => onHover(null)}
-              whileHover={{ scale: 1.3 }}
-            >
-              {/* Counter-rotate to keep icons upright */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{
-                  duration: isHighlighted ? orbit.duration * 0.6 : orbit.duration,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="relative -translate-x-1/2 -translate-y-1/2"
-              >
-                <div 
-                  className={`flex items-center justify-center rounded-xl transition-all duration-300 ${
-                    isHighlighted ? 'w-12 h-12' : 'w-10 h-10'
-                  }`}
-                  style={{
-                    background: `linear-gradient(135deg, ${tech.color}20, ${tech.color}40)`,
-                    border: `1px solid ${tech.color}${isHovered || isHighlighted ? '80' : '40'}`,
-                    boxShadow: isHovered || isHighlighted 
-                      ? `0 0 20px ${tech.color}50` 
-                      : `0 4px 12px rgba(0,0,0,0.3)`,
-                    opacity: isDimmed ? 0.4 : 1,
-                  }}
-                >
-                  <Icon 
-                    size={isHighlighted ? 24 : 20} 
-                    color={tech.color}
-                  />
-                </div>
-                
-                {/* Label - only show on hover or when highlighted */}
-                <AnimatePresence>
-                  {(isHovered || isHighlighted) && !isDimmed && (
-                    <motion.span
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 5 }}
-                      className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-medium whitespace-nowrap px-2 py-0.5 rounded"
-                      style={{ 
-                        background: `${tech.color}dd`,
-                        color: '#fff'
-                      }}
-                    >
-                      {tech.name}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </motion.div>
+              tech={tech}
+              angle={angle}
+              radius={radius}
+              orbitDuration={orbit.duration}
+              iconSize={iconSize}
+              onHover={onTechHover}
+              isHovered={hoveredTech === tech.name}
+            />
           );
         })}
       </motion.div>
@@ -196,62 +240,38 @@ const Orbit = ({ orbit, index, isHighlighted, isDimmed, onHover, hoveredTech }: 
 // CENTRAL CORE
 // ═══════════════════════════════════════════════════════════
 
-const CentralCore = ({ selectedOrbit }: { selectedOrbit: string | null }) => {
-  const orbit = selectedOrbit ? techOrbits.find(o => o.name === selectedOrbit) : null;
+const CentralCore = ({ selectedOrbit, size }: { selectedOrbit: string | null; size: number }) => {
+  const orbit = selectedOrbit ? baseTechOrbits.find(o => o.name === selectedOrbit) : null;
   const color = orbit?.color || "#8b5cf6";
   
   return (
-    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-      {/* Outer glow */}
-      <div 
-        className="absolute inset-0 rounded-full blur-xl transition-colors duration-500"
-        style={{ 
-          background: `radial-gradient(circle, ${color}30 0%, transparent 70%)`,
-          width: 120,
-          height: 120,
-          marginLeft: -60,
-          marginTop: -60,
-        }}
-      />
-      
-      {/* Core */}
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="relative w-20 h-20 rounded-full border-2 flex items-center justify-center"
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="rounded-full border flex items-center justify-center"
         style={{
+          width: size,
+          height: size,
           borderColor: `${color}50`,
-          background: `linear-gradient(135deg, ${color}10, transparent)`,
-          boxShadow: `0 0 40px ${color}30, inset 0 0 20px ${color}10`,
+          background: `radial-gradient(circle, ${color}15 0%, transparent 70%)`,
         }}
       >
         <div 
-          className="absolute inset-2 rounded-full border"
-          style={{ borderColor: `${color}30` }}
+          className="rounded-full"
+          style={{ 
+            width: size * 0.55,
+            height: size * 0.55,
+            border: `1px solid ${color}35`,
+          }}
         />
       </motion.div>
-      
-      {/* Label */}
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 text-center">
-        <motion.span 
-          key={selectedOrbit}
-          initial={{ opacity: 0, y: -5 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-lg font-bold transition-colors duration-300"
-          style={{ color }}
-        >
-          {selectedOrbit || "STACK"}
-        </motion.span>
-        <p className="text-[10px] text-white/40 mt-1">
-          {selectedOrbit ? `${orbit?.techs.length} tecnologías` : "Tech Orbit"}
-        </p>
-      </div>
     </div>
   );
 };
 
 // ═══════════════════════════════════════════════════════════
-// LEGEND
+// LEGEND (Botones de filtro)
 // ═══════════════════════════════════════════════════════════
 
 const Legend = ({ 
@@ -261,25 +281,23 @@ const Legend = ({
   selectedOrbit: string | null;
   onSelect: (name: string | null) => void;
 }) => (
-  <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-1 sm:gap-1.5 md:gap-2 max-w-[90%] px-2">
-    {techOrbits.map((orbit) => {
+  <div className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-1 sm:gap-1.5 max-w-[95%] z-30 px-2">
+    {baseTechOrbits.map((orbit) => {
       const isActive = selectedOrbit === orbit.name;
       return (
         <button
           key={orbit.name}
           onClick={() => onSelect(isActive ? null : orbit.name)}
-          className="px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] md:text-[11px] font-medium transition-all duration-300 border backdrop-blur-sm"
+          className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-medium transition-all duration-300 border backdrop-blur-sm"
           style={{
-            background: isActive ? `${orbit.color}25` : 'rgba(0,0,0,0.4)',
-            borderColor: isActive ? orbit.color : 'rgba(255,255,255,0.1)',
-            color: isActive ? orbit.color : 'rgba(255,255,255,0.6)',
-            boxShadow: isActive ? `0 0 15px ${orbit.color}30` : 'none',
-            transform: isActive ? 'scale(1.05)' : 'scale(1)'
+            background: isActive ? `${orbit.color}35` : 'rgba(0,0,0,0.6)',
+            borderColor: isActive ? orbit.color : 'rgba(255,255,255,0.12)',
+            color: isActive ? orbit.color : 'rgba(255,255,255,0.65)',
           }}
         >
-          <span className="flex items-center gap-1 sm:gap-1.5">
+          <span className="flex items-center gap-1">
             <span 
-              className="w-2 h-2 rounded-full"
+              className="w-1.5 h-1.5 rounded-full"
               style={{ background: orbit.color }}
             />
             {orbit.name}
@@ -302,23 +320,28 @@ interface TechOrbitProps {
 const TechOrbit = ({ selectedOrbit: externalSelectedOrbit, onOrbitSelect }: TechOrbitProps) => {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [internalSelectedOrbit, setInternalSelectedOrbit] = useState<string | null>(null);
+  const multiplier = useScreenSize();
   
   const selectedOrbit = externalSelectedOrbit !== undefined ? externalSelectedOrbit : internalSelectedOrbit;
   const setSelectedOrbit = onOrbitSelect || setInternalSelectedOrbit;
 
+  // Tamaños calculados según pantalla
+  const iconSize = Math.max(26, Math.round(38 * multiplier));
+  const coreSize = Math.max(35, Math.round(55 * multiplier));
+
   return (
-    <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[650px] rounded-2xl overflow-hidden border border-white/[0.06] bg-gradient-to-b from-black/30 to-transparent">
+    <div className="relative w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[550px] rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-b from-black/50 to-black/30">
       {/* Header */}
-      <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20">
-        <h2 className="text-sm sm:text-base md:text-lg font-semibold text-white/90">
+      <div className="absolute top-2 sm:top-3 left-2 sm:left-3 z-20">
+        <h2 className="text-xs sm:text-sm md:text-base font-semibold text-white/90">
           Tech <span className="text-violet-400">Stack</span>
         </h2>
-        <p className="text-[8px] sm:text-[10px] text-white/40 mt-0.5">
-          {selectedOrbit ? `Filtrado: ${selectedOrbit}` : 'Hover para ver • Click para filtrar'}
+        <p className="text-[8px] sm:text-[9px] text-white/40 mt-0.5">
+          {selectedOrbit ? `Filtrado: ${selectedOrbit}` : 'Hover para detalles'}
         </p>
       </div>
 
-      {/* Clear button */}
+      {/* Clear filter button */}
       <AnimatePresence>
         {selectedOrbit && (
           <motion.button
@@ -326,40 +349,33 @@ const TechOrbit = ({ selectedOrbit: externalSelectedOrbit, onOrbitSelect }: Tech
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             onClick={() => setSelectedOrbit(null)}
-            className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-white/10 border border-white/20 text-white/70 hover:bg-white/20 transition-all"
+            className="absolute top-2 sm:top-3 right-2 sm:right-3 z-20 px-2 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-medium bg-white/10 border border-white/20 text-white/70 hover:bg-white/20 transition-all"
           >
             ✕ Limpiar
           </motion.button>
         )}
       </AnimatePresence>
 
-      {/* Orbits container - scaled down for mobile */}
-      <div className="absolute inset-0 flex items-center justify-center scale-[0.5] sm:scale-[0.65] md:scale-[0.8] lg:scale-100 origin-center">
-        {techOrbits.map((orbit, index) => (
-          <Orbit
+      {/* Orbits container - NO overflow hidden, NO scale */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        {baseTechOrbits.map((orbit) => (
+          <OrbitRing
             key={orbit.name}
             orbit={orbit}
-            index={index}
+            radius={orbit.baseRadius * multiplier}
             isHighlighted={selectedOrbit === orbit.name}
             isDimmed={selectedOrbit !== null && selectedOrbit !== orbit.name}
-            onHover={setHoveredTech}
+            onTechHover={setHoveredTech}
             hoveredTech={hoveredTech}
+            iconSize={iconSize}
           />
         ))}
         
-        <CentralCore selectedOrbit={selectedOrbit} />
+        <CentralCore selectedOrbit={selectedOrbit} size={coreSize} />
       </div>
 
-      {/* Legend */}
+      {/* Legend filter buttons */}
       <Legend selectedOrbit={selectedOrbit} onSelect={setSelectedOrbit} />
-
-      {/* Background gradient */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.5) 80%)'
-        }}
-      />
     </div>
   );
 };
