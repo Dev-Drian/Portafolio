@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    ouput: 'export',
-    domains: ['https://adecas-eg.github.io/Portafolio'],
-
+    output: 'export',
+    images: {
+        unoptimized: true,
+        domains: ['adecas-eg.github.io'],
+    },
+    trailingSlash: true,
 };
 
 export default nextConfig;

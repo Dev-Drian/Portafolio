@@ -4,7 +4,7 @@ import TransitionsPage from "@/components/transitions-page";
 import ContainerPage from "@/components/container";
 import Avatar from "@/components/avatar";
 import CounterServices from "@/components/counter-services";
-import TimeLine from "@/components/timeline";
+import Timeline3D from "@/components/timeline-3d";
 import { motion } from "framer-motion";
 
 const PageAboutMe = () => {
@@ -20,9 +20,9 @@ const PageAboutMe = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <h1 className="text-2xl leading-tight text-center md:text-left md:text-5xl md:mt-10">
+          <h1 className="text-xl sm:text-2xl leading-tight text-center md:text-left md:text-5xl md:mt-10">
             Toda mi{" "}
-            <span className="font-bold gradient-text">
+            <span className="font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
               Trayectoria Profesional
             </span>
           </h1>
@@ -30,7 +30,7 @@ const PageAboutMe = () => {
             initial={{ width: 0 }}
             animate={{ width: "120px" }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="h-1 mt-4 rounded-full bg-gradient-to-r from-blue-500 via-violet-500 to-blue-400 mx-auto md:mx-0"
+            className="h-0.5 sm:h-1 mt-3 sm:mt-4 rounded-full bg-gradient-to-r from-violet-500 via-cyan-500 to-violet-400 mx-auto md:mx-0"
           />
         </motion.div>
 
@@ -41,7 +41,7 @@ const PageAboutMe = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <TimeLine />
+          <Timeline3D />
         </motion.div>
 
         {/* ── CTA Contáctame ─────────────────────── */}
@@ -49,17 +49,17 @@ const PageAboutMe = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 md:mt-20"
+          className="mt-10 sm:mt-14 md:mt-20"
         >
-          <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
             <div className="h-px flex-1 bg-white/[0.06]" />
-            <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-white/25">Contacto</span>
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase text-white/25">Contacto</span>
             <div className="h-px flex-1 bg-white/[0.06]" />
           </div>
 
           <div className="text-center">
-            <p className="text-white/40 text-sm mb-2">¿Te gustó lo que viste?</p>
-            <h3 className="text-xl md:text-2xl font-bold text-white/90 mb-6">
+            <p className="text-white/40 text-xs sm:text-sm mb-2">¿Te gustó lo que viste?</p>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white/90 mb-4 sm:mb-6">
               Trabajemos <span className="gradient-text">juntos</span>
             </h3>
             <motion.a
@@ -67,7 +67,7 @@ const PageAboutMe = () => {
               target="_blank"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2.5 px-7 py-3 text-sm font-semibold
+              className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold
                 rounded-full bg-emerald-500/15 border border-emerald-400/20
                 text-emerald-300 hover:text-emerald-200 hover:border-emerald-400/35
                 transition-all duration-300 hover:shadow-[0_0_25px_rgba(52,211,153,0.15)]"

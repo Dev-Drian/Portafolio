@@ -1,94 +1,72 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Container, Engine } from "@tsparticles/engine";
 
-import { loadSlim } from "@tsparticles/slim"; 
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useMemo, Suspense, memo } from "react";
+import * as THREE from "three";
 
-const CoverParticles = () => {
-  const [init, setInit] = useState(false);
-
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      
-      await loadSlim(engine);
-      
-    }).then(() => {
-      setInit(true);
-    });
+// Ultra-optimized static particle field
+const ParticleField = memo(function ParticleField() {
+  const pointsRef = useRef<THREE.Points>(null);
+  
+  // Static positions - no animation for max performance
+  const positions = useMemo(() => {
+    const pos = new Float32Array(60 * 3);
+    for (let i = 0; i < 60; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 16;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 16;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
+    }
+    return pos;
   }, []);
 
+  // Gentle rotation only
+  useFrame(({ clock }) => {
+    if (pointsRef.current) {
+      pointsRef.current.rotation.y = clock.elapsedTime * 0.02;
+    }
+  });
+
   return (
-    init && (
-      <div className="w-[opx]">
-        <Particles
-          id="tsparticles"
-          options={{
-            fpsLimit: 120,
-            interactivity: {
-              events: {
-                onClick: {
-                  enable: true,
-                  mode: "push",
-                },
-                onHover: {
-                  enable: true,
-                  mode: "repulse",
-                },
-              },
-              modes: {
-                push: {
-                  quantity: 4,
-                },
-                repulse: {
-                  distance: 200,
-                  duration: 0.4,
-                },
-              },
-            },
-            particles: {
-              color: {
-                value: "#ffffff",
-              },
-              links: {
-                color: "#ffffff",
-                distance: 150,
-                enable: true,
-                opacity: 0.5,
-                width: 1,
-              },
-              move: {
-                direction: "none",
-                enable: true,
-                outModes: {
-                  default: "bounce",
-                },
-                random: false,
-                speed: 1,
-                straight: false,
-              },
-              number: {
-                density: {
-                  enable: true,
-                },
-                value: 80,
-              },
-              opacity: {
-                value: 0.5,
-              },
-              shape: {
-                type: "circle",
-              },
-              size: {
-                value: { min: 1, max: 5 },
-              },
-            },
-            detectRetina: true,
-          }}
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={60}
+          array={positions}
+          itemSize={3}
         />
-      </div>
-    )
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.05}
+        color="#ffffff"
+        transparent
+        opacity={0.5}
+        sizeAttenuation
+      />
+    </points>
+  );
+});
+
+const CoverParticles = () => {
+  return (
+    <div className="fixed inset-0 z-0 pointer-events-none">
+      <Suspense fallback={null}>
+        <Canvas
+          camera={{ position: [0, 0, 10], fov: 50 }}
+          gl={{ 
+            antialias: false, 
+            alpha: true, 
+            powerPreference: "low-power",
+            failIfMajorPerformanceCaveat: true
+          }}
+          dpr={1}
+          frameloop="demand"
+          style={{ background: "transparent" }}
+        >
+          <ParticleField />
+        </Canvas>
+      </Suspense>
+    </div>
   );
 };
 

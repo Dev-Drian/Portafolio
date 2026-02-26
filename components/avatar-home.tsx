@@ -6,7 +6,7 @@ import MotionTransition from "./transitions-components";
 
 const AvatarHome = () => {
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center order-first md:order-none">
       <MotionTransition positions="bottom" className="relative">
         {/* Single very subtle ambient glow */}
         <div className="absolute inset-0 rounded-full bg-blue-400/[0.04] blur-[40px]" style={{ margin: "-20px" }} />
@@ -22,10 +22,10 @@ const AvatarHome = () => {
               <Image
                 src="/image.png"
                 priority
-                height={350}
-                width={350}
+                height={220}
+                width={220}
                 alt="Adrian Castro - Full Stack Developer"
-                className="rounded-full object-cover"
+                className="rounded-full object-cover w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px]"
               />
             </div>
           </div>
@@ -35,10 +35,10 @@ const AvatarHome = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1, type: "spring" }}
-            className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-[#0d0f1a]/80 backdrop-blur-md border border-emerald-500/20"
+            className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#0d0f1a]/80 backdrop-blur-md border border-emerald-500/20"
           >
-            <span className="flex items-center gap-2 text-sm font-medium text-emerald-400">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            <span className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-emerald-400">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full animate-pulse" />
               Disponible
             </span>
           </motion.div>
